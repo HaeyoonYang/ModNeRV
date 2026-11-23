@@ -1,0 +1,40 @@
+seed: 0
+exp_name: 0.75M
+
+data:
+  path: ../DATA/
+
+
+model:
+  enc_base: [[4, 3, 4], [32, 9, 16], [64, 18, 32]]
+  dec_dim: 118
+  dec_strides: [5, 2, 2, 2]
+  dec_depths: [1, 3, 3, 3]
+  reduction: 1.2
+  lower_width: 1
+  at_dim: 8
+
+train:
+  batch_size: 1
+  num_workers: 8
+  loss: Fusion13
+  mask_loss: FFT_L1
+  mask_alpha: 0.015
+  print_freq: 50
+  save_freq: 50
+  optim:
+    opt: adanp
+    lr: 0.007
+    weight_decay: 0.0
+    momentum: 0.9
+    sched: cosine
+    min_lr: 0.00002
+    warmup_epoch_ratio: 0.1
+    warmup_lr: 0.00002
+    eval_metric: 'psnr'
+    sched_on_updates: true
+
+val:
+  batch_size: 1
+  num_workers: 8
+  print_freq: 50

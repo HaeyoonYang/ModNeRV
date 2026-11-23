@@ -1,0 +1,7 @@
+yaml
+tqdm
+opencv-python
+einops
+easydict
+tensorboardX
+deepspeed
